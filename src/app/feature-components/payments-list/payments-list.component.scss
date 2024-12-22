@@ -1,0 +1,26 @@
+.payments-container {
+  position: relative;
+}
+
+.payments-table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 92vh;
+  min-width: 200px;
+  max-width: 100vw;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+

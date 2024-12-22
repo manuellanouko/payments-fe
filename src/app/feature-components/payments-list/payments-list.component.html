@@ -1,0 +1,128 @@
+<!--<p>payments-list works!</p>-->
+
+
+<div class="payments-container">
+  <!--<mat-form-field>-->
+  <!--  <mat-label>Filter</mat-label>-->
+  <!--  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>-->
+  <!--</mat-form-field>-->
+
+  <div class="mat-elevation-z8" class="payments-table-container">
+    <table mat-table [dataSource]="paymentsData" matSort>
+
+      <!-- ID Column -->
+  <!--    <ng-container matColumnDef="id">-->
+  <!--      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>-->
+  <!--      <td mat-cell *matCellDef="let row"> {{row.id}} </td>-->
+  <!--    </ng-container>-->
+
+      <!-- Column: payee_first_name -->
+      <ng-container matColumnDef="payee_first_name">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_first_name}} </td>
+      </ng-container>
+      <!-- Column: payee_last_name -->
+      <ng-container matColumnDef="payee_last_name">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_last_name}} </td>
+      </ng-container>
+      <!-- Column: payee_payment_status -->
+      <ng-container matColumnDef="payee_payment_status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_payment_status}} </td>
+      </ng-container>
+      <!-- Column: payee_added_date_utc -->
+      <ng-container matColumnDef="payee_added_date_utc">
+        <th mat-header-cell *matHeaderCellDef> Created </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_added_date_utc}} </td>
+      </ng-container>
+      <!-- Column: payee_due_date -->
+      <ng-container matColumnDef="payee_due_date">
+        <th mat-header-cell *matHeaderCellDef> Due date </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_due_date}} </td>
+      </ng-container>
+      <!-- Column: payee_address_line_1 -->
+      <ng-container matColumnDef="payee_address_line_1">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_address_line_1}} </td>
+      </ng-container>
+      <!-- Column: payee_address_line_2 -->
+      <ng-container matColumnDef="payee_address_line_2">
+        <th mat-header-cell *matHeaderCellDef> Address line 2 </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_address_line_2}} </td>
+      </ng-container>
+      <!-- Column: payee_city -->
+      <ng-container matColumnDef="payee_city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_city}} </td>
+      </ng-container>
+      <!-- Column: payee_country -->
+      <ng-container matColumnDef="payee_country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_country}} </td>
+      </ng-container>
+      <!-- Column: payee_province_or_state -->
+      <ng-container matColumnDef="payee_province_or_state">
+        <th mat-header-cell *matHeaderCellDef> Province/state </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_province_or_state}} </td>
+      </ng-container>
+      <!-- Column: payee_postal_code -->
+      <ng-container matColumnDef="payee_postal_code">
+        <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_postal_code}} </td>
+      </ng-container>
+      <!-- Column: payee_phone_number -->
+      <ng-container matColumnDef="payee_phone_number">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_phone_number}} </td>
+      </ng-container>
+      <!-- Column: payee_email -->
+      <ng-container matColumnDef="payee_email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.payee_email}} </td>
+      </ng-container>
+      <!-- Column: currency -->
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef> Currency </th>
+        <td mat-cell *matCellDef="let row"> {{row.currency}} </td>
+      </ng-container>
+      <!-- Column: discount_percent -->
+      <ng-container matColumnDef="discount_percent">
+        <th mat-header-cell *matHeaderCellDef> Discount </th>
+        <td mat-cell *matCellDef="let row"> {{row.discount_percent}}% </td>
+      </ng-container>
+      <!-- Column: tax_percent -->
+      <ng-container matColumnDef="tax_percent">
+        <th mat-header-cell *matHeaderCellDef> Tax </th>
+        <td mat-cell *matCellDef="let row"> {{row.tax_percent}}% </td>
+      </ng-container>
+      <!-- Column: due_amount -->
+      <ng-container matColumnDef="due_amount">
+        <th mat-header-cell *matHeaderCellDef> Amount due </th>
+        <td mat-cell *matCellDef="let row"> {{row.due_amount}} </td>
+      </ng-container>
+      <!-- Column: total_due -->
+      <ng-container matColumnDef="total_due">
+        <th mat-header-cell *matHeaderCellDef> Total due </th>
+        <td mat-cell *matCellDef="let row"> {{row.total_due}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!--    &lt;!&ndash; Row shown when there is no matching data. &ndash;&gt;-->
+  <!--    <tr class="mat-row" *matNoDataRow>-->
+  <!--      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>-->
+  <!--    </tr>-->
+    </table>
+
+    <mat-paginator
+      showFirstLastButtons
+      aria-label="Select page"
+      [pageSizeOptions]="[15]"
+      [length]="totalPages"
+      (page)="onNextPreviousPageClicked($event.pageIndex)"
+    ></mat-paginator>
+  </div>
+</div>
+
