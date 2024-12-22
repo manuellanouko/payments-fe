@@ -16,7 +16,7 @@ export class PaymentsService {
 
   public getPayments(pageNumber: number): Observable<GetPaymentsResponseModel> {
     const url = BACKEND_URL + '/payments';
-    const requestUrl = `${url}?q=page_number=${pageNumber}`;
+    const requestUrl = `${url}?page_number=${pageNumber}`;
     // const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '**');
     const httpOptions = {
       headers: new HttpHeaders ({
